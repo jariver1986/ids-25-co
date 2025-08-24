@@ -17,6 +17,8 @@ OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 SPDX-License-Identifier: MIT
+Autor: John Rivera
+Fecha: 29 de febrero
 *************************************************************************************************/
 
 /** \file led.c
