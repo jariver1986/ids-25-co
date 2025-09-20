@@ -1,14 +1,25 @@
 #include "leds.h"
 #include <stdbool.h>
+
+#define ALL_LED_OFF       0x0000
+#define FIRST_BIT         1
+#define LED_TO_BIT_OFFSET 1
+
 static uint16_t * puerto = 0;
+
+static uint16_t LedToMask(int led) {
+    return FIRST_BIT << (led - LED_TO_BIT_OFFSET);
+}
+
 void LedsInitDriver(uint16_t * puerto_virtual) {
     puerto = puerto_virtual; // <— ¡asigna el puntero global!
-    *puerto = 0x0000;        // todos apagados
+    *puerto = ALL_LED_OFF;   // todos apagados
 }
 
 void LedsTurnOn(int led) {
-    *puerto = 1 << 2;
+    *puerto |= LedToMask(led);
 }
+
 void LedsTurnOff(int led) {
-    *puerto = 0x000;
+    *puerto &= ~LedToMask(led);
 }
