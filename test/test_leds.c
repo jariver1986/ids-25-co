@@ -20,7 +20,10 @@ agregar prueba para forzar los rangos
 #include "leds.h"
 #include "stdint.h"
 
+static uint16_t puerto_virtual;
+
 void setUp(void) {
+    LedsInitDriver(&puerto_virtual);
 }
 
 void tearDown(void) {
@@ -35,9 +38,19 @@ void test_al_iniciar_todos_los_leds_estan_apagados(void) {
 }
 // prender un led y verificar que no cambia el resto
 void test_prender_un_led_y_verificar_que_no_cambia_el_resto(void) {
-    uint16_t puerto_virtual; // la funcion actual ya lo deja definido con un estado
+    // uint16_t puerto_virtual; // la funcion actual ya lo deja definido con un estado
 
-    LedsInitDriver(&puerto_virtual);
+    // LedsInitDriver(&puerto_virtual);
     LedsTurnOn(3);
     TEST_ASSERT_EQUAL_HEX16(1 << 2, puerto_virtual); // o puede escribirse 0x0004 a 1<<2
+}
+
+// prender un led cualquiera y apagarlo
+void test_prender_un_led_cualquiera_y_apagarlo(void) {
+    // uint16_t puerto_virtual;
+
+    // LedsInitDriver(&puerto_virtual);
+    LedsTurnOn(5);
+    LedsTurnOff(5);
+    TEST_ASSERT_EQUAL_HEX16(0x0000, puerto_virtual);
 }

@@ -9,3 +9,6 @@ void LedsInitDriver(uint16_t * puerto_virtual) {
 void LedsTurnOn(int led) {
     *puerto = 1 << 2;
 }
+void LedsTurnOff(int led) {
+    *puerto = 0x000;
+}
