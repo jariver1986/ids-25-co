@@ -97,3 +97,16 @@ void test_prender_todos_los_leds_luego_de_cambios_previos(void) {
     LedsTurnOnAll();
     TEST_ASSERT_EQUAL_HEX16(0xFFFF, puerto_virtual);
 }
+
+void apagar_todos_los_leds(void) { // <-- nuevo test
+    // Prepara un estado con varios encendidos
+    LedsTurnOn(1);
+    LedsTurnOn(8);
+    LedsTurnOn(16);
+
+    // Acción
+    LedsTurnOffAll();
+
+    // Verificación
+    TEST_ASSERT_EQUAL_HEX16(0x0000, puerto_virtual);
+}

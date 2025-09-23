@@ -33,3 +33,8 @@ void LedsTurnOff(int led) {
 void LedsTurnOnAll(void) { // <-- agregar
     *puerto = ALL_LED_ON;
 }
+
+// leds.c
+void LedsTurnOffAll(void) { // <-- nuevo
+    *puerto = ALL_LED_OFF;  // pone los 16 bits en 0
+}
