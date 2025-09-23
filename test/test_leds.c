@@ -136,3 +136,12 @@ void test_consultar_led_apagado(void) {
     TEST_ASSERT_TRUE(LedsConsultarLedOff(5));
     TEST_ASSERT_FALSE(LedsConsultarLedOn(5));
 }
+
+void test_prender_led_fuera_de_rango_genera_mensaje(void) {
+    RegistrarMensaje_ExpectAnyArgs();
+
+    LedsTurnOn(20); // LED fuera de rango
+
+    // Se verifica que le puerto no cambia
+    TEST_ASSERT_EQUAL_HEX16(0x0000, puerto_virtual);
+}
