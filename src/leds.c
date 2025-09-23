@@ -3,6 +3,7 @@
 #include "errores.h"
 
 #define ALL_LED_OFF       0x0000
+#define ALL_LED_ON        0xFFFF
 #define FIRST_BIT         1
 #define LED_TO_BIT_OFFSET 1
 
@@ -27,4 +28,8 @@ void LedsTurnOn(int led) {
 
 void LedsTurnOff(int led) {
     *puerto &= ~LedToMask(led);
+}
+
+void LedsTurnOnAll(void) { // <-- agregar
+    *puerto = ALL_LED_ON;
 }
