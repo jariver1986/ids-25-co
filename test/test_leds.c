@@ -90,6 +90,7 @@ void test_tratar_de_encender_un_led_fuera_de_rango_y_comprobar_que_se_genera_un_
 }
 
 void test_prender_todos_los_leds_luego_de_cambios_previos(void) {
+    RegistrarMensaje_ExpectAnyArgs();
     LedsTurnOn(3);
     LedsTurnOn(7);
     LedsTurnOff(3);
@@ -108,5 +109,16 @@ void apagar_todos_los_leds(void) { // <-- nuevo test
     LedsTurnOffAll();
 
     // Verificación
+    TEST_ASSERT_EQUAL_HEX16(0x0000, puerto_virtual);
+}
+
+void prender_todos_y_luego_apagar_todos(void) {
+
+    RegistrarMensaje_ExpectAnyArgs();
+    RegistrarMensaje_ExpectAnyArgs();
+
+    LedsTurnOnAll();
+    LedsTurnOffAll();
+
     TEST_ASSERT_EQUAL_HEX16(0x0000, puerto_virtual);
 }

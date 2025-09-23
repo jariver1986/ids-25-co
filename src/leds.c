@@ -30,11 +30,12 @@ void LedsTurnOff(int led) {
     *puerto &= ~LedToMask(led);
 }
 
-void LedsTurnOnAll(void) { // <-- agregar
+void LedsTurnOnAll(void) {
     *puerto = ALL_LED_ON;
+    RegistrarMensaje(INFORMACION, __FUNCTION__, __LINE__, "Todos los LEDs encendidos");
 }
 
-// leds.c
-void LedsTurnOffAll(void) { // <-- nuevo
-    *puerto = ALL_LED_OFF;  // pone los 16 bits en 0
+void LedsTurnOffAll(void) {
+    *puerto = ALL_LED_OFF;
+    RegistrarMensaje(INFORMACION, __FUNCTION__, __LINE__, "Todos los LEDs apagados");
 }
