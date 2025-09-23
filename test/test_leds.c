@@ -129,3 +129,10 @@ void test_consultar_led_encendido(void) {
     TEST_ASSERT_TRUE(LedsConsultarLedOn(5));
     TEST_ASSERT_FALSE(LedsConsultarLedOff(5));
 }
+
+void test_consultar_led_apagado(void) {
+    LedsTurnOff(5);
+    TEST_ASSERT_EQUAL(LED_OFF, LedsConsultarEstado(5));
+    TEST_ASSERT_TRUE(LedsConsultarLedOff(5));
+    TEST_ASSERT_FALSE(LedsConsultarLedOn(5));
+}
