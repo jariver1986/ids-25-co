@@ -122,3 +122,10 @@ void prender_todos_y_luego_apagar_todos(void) {
 
     TEST_ASSERT_EQUAL_HEX16(0x0000, puerto_virtual);
 }
+
+void test_consultar_led_encendido(void) {
+    LedsTurnOn(5);
+    TEST_ASSERT_EQUAL(LED_ON, LedsConsultarEstado(5));
+    TEST_ASSERT_TRUE(LedsConsultarLedOn(5));
+    TEST_ASSERT_FALSE(LedsConsultarLedOff(5));
+}

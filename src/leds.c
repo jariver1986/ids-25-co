@@ -39,3 +39,19 @@ void LedsTurnOffAll(void) {
     *puerto = ALL_LED_OFF;
     RegistrarMensaje(INFORMACION, __FUNCTION__, __LINE__, "Todos los LEDs apagados");
 }
+
+int LedsConsultarEstado(int led) {
+    if (led < 1 || led > 16) {
+        RegistrarMensaje(ALERTA, __FUNCTION__, __LINE__, "El led no es valido");
+        return -1; // retorna valor de error
+    }
+    return (*puerto & LedToMask(led)) ? LED_ON : LED_OFF;
+}
+
+int LedsConsultarLedOn(int led) {
+    return (LedsConsultarEstado(led) == LED_ON);
+}
+
+int LedsConsultarLedOff(int led) {
+    return (LedsConsultarEstado(led) == LED_OFF);
+}
