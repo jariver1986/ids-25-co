@@ -1,0 +1,15 @@
+# Por defecto, normaliza texto a LF
+* text=auto eol=lf
+
+# Archivos que sí deben quedarse en CRLF (si los usas en Windows)
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Binarios (sin conversión)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.pdf binary
+*.zip binary
