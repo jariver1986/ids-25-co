@@ -30,4 +30,3 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 # Limpiar carpeta build
 clean:
 	@rm -r $(OUT_DIR)
-
