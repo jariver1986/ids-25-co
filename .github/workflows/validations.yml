@@ -57,5 +57,5 @@ jobs:
         uses: dorny/test-reporter@v1
         with:
           name: Ceedling Unit Tests
-          path: build/artifacts/test/*.xml
+          path: build/artifacts/test/junit_tests_report.xml   # <-- solo el JUnit
           reporter: java-junit
